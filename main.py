@@ -57,13 +57,12 @@ def main():
                     if comprps == 2:
                         print ("You won!")
     print ("Would you like a rematch?")
-    (input.lower())
     reanswer = input()
-    if "y" in reanswer:
+    if "y" or "Y" in reanswer:
         main()
     else:
         exit()
         print("Alright sounds good!")
     print("Alright sounds good!")
 
-#nice.
+main()

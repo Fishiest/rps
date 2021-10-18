@@ -9,18 +9,18 @@ comwins = 0
 def rpsask():
     global rps
     print("I am currently forcing you to play rock paper scissors. [R/P/S]")
-    humanrps = input()
-    if humanrps == "R":
+    humanrps = input().lower()
+    if humanrps == "r":
         rps = 1
-    elif humanrps == "P":
+    elif humanrps == "p":
         rps = 2
     elif humanrps == "S":
         rps = 3
     else:
-        print("When I said [R/P/S] I meant exactly [R/P/S], caps and everything")
+        print("Are you dyslexic? How did you manage to not type r, p, or s?? I mean not the full word just the letter-")
         time.sleep(0.5)
         print("Restarting..")
-        time.sleep(3)
+        time.sleep(2)
         rpsask()
 def main():
     global comwins
@@ -64,7 +64,7 @@ def main():
                     print ("You won!")
                     wins += 1
     print ("Would you like to have a rematch? [Y/N]")
-    if input() == "Y":
+    if "y" in input().lower():
         main()
     else:
         print("Alright, the score was", wins, "-", comwins,)

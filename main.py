@@ -1,62 +1,39 @@
+listOfWin = {"r": ("sc", "l"),
+              "p": ("r", "sp"),
+              "sc": ("p", "l"),
+              "l": ("sp", "p"),
+              "sp": ("sc", "r")}
+listOfChoice = {"r", "p", "sc", "l", "sp"}
+import random
 
-#rock paper scissors because i need to learn how to spell scissors
-
-from random import randint
-import time
-wins = 0
-comwins = 0
-global rpsList
-rpsList = 1, 2, 3
-
-def rpsask():
+rps = "tehe this is just so the code doesn't break :)"
+def choice():
     global rps
-    print("I am currently forcing you to play rock paper scissors. [R/P/S]")
-    humanrps = input().lower()[0]
-    if humanrps == "r":
-        rps = 1
-    elif humanrps == "p":
-        rps = 2
-    elif humanrps == "s":
-        rps = 3
+    humanChoice = input("What will your choice be? (r/p/sc/l/sp)")
+    if humanChoice.lower()[0] == "s":
+        if humanChoice.lower()[1] == "c":
+            rps = "sc"
+        elif humanChoice.lower()[1] == "p":
+            rps = "sp"
+    if rps == "tehe this is just so the code doesn't break :)":
+        rps = humanChoice.lower()[0]
+    if rps in listOfChoice:
+        print("Not a smart choice, but okay..")
     else:
-        print("Bruh.")
-        time.sleep(0.5)
-        print("Restarting..")
-        time.sleep(2)
-        rpsask()
-def main():
-    global comwins
-    global wins
-    #Saying what the computer chose.
-    rpsask()
-    comprps = randint(1, 3)
-    if comprps == 1:
-        print("The computer chose rock!")
-        time.sleep(.5)
-    elif comprps == 2:
-        print("The computer chose paper!")
-        time.sleep(.5)
-    elif comprps == 3:
-        print("The computer chose scissors!")
-        time.sleep(.5)
-    if rps == comprps:
+        print("You didn't type rock, paper, scissors, lizard, or spock...")
+        choice()
+    comChoice = random.choice(["r", "p", "sc", "l", "sp"])
+    if comChoice == rps:
         print("Its a tie!")
-        wins + .5
-        comwins = .5
-    elif rps == 1:
-        if comprps == rpsList[1]:
-            print("You lost!")
-            comwins + 1
-    elif rps == 2:
-        if comprps == rpsList[0]:
-            print("You lost!")
-    elif rps == 3:
-        if comprps == rpsList[3]:
-            print("You lost!")
-    print ("Would you like to have a rematch? [Y/N]")
-    if "y" in input().lower()[0]:
-        main()
+    elif comChoice in listOfWin[rps]:
+        print("You won!")
     else:
-        print("Alright, the score was", wins, "-", comwins,)
+        print("Oh wow you lost LMAO couldn't be me")
+    print("Your choice:", humanChoice,"\nComputers Choice:", comChoice)
 
-main()
+    if input("Either way, would you like to try and murder me again?").lower()[0] == "y":
+         choice()
+    else:
+        exit()
+
+choice()
